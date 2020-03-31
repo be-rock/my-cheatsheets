@@ -1,0 +1,3 @@
+# create dataframe from python list of dictionaries
+my_list = [{"k1": 1, "k2": "xxx"}, {"k1": 2, "k2": "yyy"}, {"k1": 3, "k2": "zzz"}]
+df = spark.createDataFrame(Row(**x) for x in my_list)

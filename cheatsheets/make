@@ -1,0 +1,9 @@
+# makefile with a python project
+PYTHON_ENV_PATH=/path/to/env
+TEST_PATH=test
+run:
+    $(PYTHON_ENV_PATH)/python -m app.main
+test:
+    $(PYTHON_ENV_PATH)/pytest --verbose $(TEST_PATH)/unit
+    
+run with: make run or make test
