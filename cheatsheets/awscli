@@ -1,0 +1,11 @@
+# list objects in a bucket:
+aws s3 ls --endpoint-url=theEndpoint --profile yourProfile s3://bucketname/path1/path2/
+
+# copy object from local path to s3 path
+aws s3 cp --endpoint-url=theEndpoint --profile myProfile /path/to/local/file.txt s3://myBucket/unique/object/key/
+
+# put object tags
+aws --endpoint-url=theEndpoint --profile myProfile s3api put-object-tagging --bucket myBucket --key object/key/f.txt --tagging '{"TagSet": [{ "Key": "env", "Value": "abc" }]}'
+
+# get object tags
+aws --endpoint-url=theEndpoint --profile myProfile s3api get-object-tagging --bucket myBucket --key object/key/f.txt
