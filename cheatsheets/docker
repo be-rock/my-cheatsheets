@@ -1,0 +1,2 @@
+# tail the logs of a running container that matches the term "thing"
+docker logs $(docker container ls | grep thing | awk '{print $1}') --follow
