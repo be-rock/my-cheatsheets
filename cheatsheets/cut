@@ -1,0 +1,5 @@
+# To cut out the third field of text or stdoutput that is delimited by a #:
+cut -d# -f3
+
+# to cut via a delimiter:
+echo "pipe|delimited|output"| cut -d '|' -f2 # <-- output: delimited
