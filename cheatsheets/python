@@ -1,0 +1,3 @@
+# useful repr 
+return f"{self.__class__.__name__}({', '.join([f'{k}={v}' for k, v in self.__dict__.items()])})"
+
