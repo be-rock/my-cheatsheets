@@ -4,8 +4,20 @@ aws s3 ls --endpoint-url=theEndpoint --profile yourProfile s3://bucketname/path1
 # copy object from local path to s3 path
 aws s3 cp --endpoint-url=theEndpoint --profile myProfile /path/to/local/file.txt s3://myBucket/unique/object/key/
 
+# copy object to stdout on localhost
+aws s3 cp --endpoint-url=theEndpoint --profile myProfile s3://myBucket/unique/object/key/data.json - | jq
+
+# copy object with user-defined metadata
+aws s3 cp --endpoint-url=theEndpoint --profile myProfile s3://myBucket/unique/object/key/data.json --metadata '{"x-amz-meta-key1": "val1", "x-amz-meta-key2": "val2"}'
+
 # put object tags
-aws --endpoint-url=theEndpoint --profile myProfile s3api put-object-tagging --bucket myBucket --key object/key/f.txt --tagging '{"TagSet": [{ "Key": "env", "Value": "abc" }]}'
+aws s3api put-object-tagging --endpoint-url=theEndpoint --profile myProfile --bucket myBucket --key object/key/f.txt --tagging '{"TagSet": [{ "Key": "env", "Value": "abc" }]}'
 
 # get object tags
-aws --endpoint-url=theEndpoint --profile myProfile s3api get-object-tagging --bucket myBucket --key object/key/f.txt
+aws s3api get-object-tagging --endpoint-url=theEndpoint --profile myProfile --bucket myBucket --key object/key/f.txt
+
+# create new prefix
+aws s3api put-object --endpoint-url=theEndpoint --profile myProfile --bucket myBucket --key path/prefix/
+
+# get user-defined object metadata
+aws s3api head-object --endpoint-url=theEndpoint --profile myProfile s3://myBucket/unique/object/key/data.json - | jq
