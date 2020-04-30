@@ -1,6 +1,9 @@
 # list objects in a bucket:
 aws s3 ls --endpoint-url=theEndpoint --profile yourProfile s3://bucketname/path1/path2/
 
+# get prefix size
+aws s3 ls --summarize --human-readable --recursive s3://bucketname/path1/path2
+
 # copy object from local path to s3 path
 aws s3 cp --endpoint-url=theEndpoint --profile myProfile /path/to/local/file.txt s3://myBucket/unique/object/key/
 
